@@ -2,32 +2,27 @@ pico-8 cartridge // http://www.pico-8.com
 version 43
 __lua__
 function _init()
-	p_init()
+	plyr=player:new()
+	plyr:init()
 	dpal={0,1,1,2,1,13,6,4,4,9,3,13,1,13,14}
 	startgame()
-	plyr:init()
 end
 
 function startgame()
 	fadeperc=0.6
 	wind={}
 	hpwind=addwind(5,50,39,13,{})
-	_upd=update_game
 	_drw=draw_game
 	music(0,3000,4)
-end
-
-function update_game()
 end
 
 function draw_game()
 	cls(0)
 	map()
-	p_draw()
+	plyr:draw()
 end
 
 function _update()
-	p_update()
 	plyr:update()
 	if not stat(57) then
 		music(0,0,4)
@@ -41,109 +36,130 @@ function _draw()
 	checkfade()
 --	rectfill(0,128-16,128,128,0)
 --	rect(0,127-16,127,127,5)	
-
 end
 -->8
 --player
-plyr={
-	init=function(self)
-		self.r={x=0,y=0,x2=0,y2=0}
-		self.l={x=0,y=0,x2=0,y2=0}
-		self.x=1
-		self.y=6
-		self.sp={6,7}
-		self.t,self.f,self.s = 0,1,6 --tick,frame,step
-	end,
-	
-	update=function(self)
---		self.lt={
---			x=(self.x-1)*8,y=self.y*8,
---			x2=((self.x-1)*8)+8,y2=((self.y+1)*8)
---		}
---		self.rt={
---			x=(self.x+1)*8,y=self.y*8,
---			x2=((self.x+1)*8)+8,y2=((self.y+1)*8)
---		}
-	end,
---	r_tile={
---		x=rt[0].x/8,
---		y=rt[0].y/8
---	}
-	r_tile=function(self)
-		printh("r_tile")
-		return {
-			x=self.r.x/8 or 0,
-			y=self.r.y/8 or 0
-		}
-	end,
+player={}
+function player:new(tbl)
+tbl = tbl or {}
+setmetatable(tbl,{ __index = self})
+return tbl
+end
+function player:init()
+	self.r={x=0,y=0,x2=0,y2=0}
+	self.l={x=0,y=0,x2=0,y2=0}
+	self.x=1
+	self.y=1
+	self.sp={23,24}
+	--tick,frame,step	
+	self.t,self.f,self.s = 0,1,16
+	self.state="walk"
+	self.anime={
+	idle={s=16,sp={23,24}},
+	walk={s=6,sp={6,7}},
 }
-
-function p_init()
-	p={x=1,y=3,a={}}
-	sp={6,7}
-	t,f,s=0,1,6 --tick,frame,step
-	add(p.a,{})
-	add(p.a,{})
-	add(p.a,{})
-	add(p.a,{})
 end
 
-function p_update()
-	plyr:update()
---	rt={
---		x=(p.x+1)*8,y=p.y*8,
---		x2=((p.x+1)*8)+8,y2=((p.y+1)*8)
---	}
---	p.a[1]={
---		x=(p.x+1)*8,y=p.y*8,
---		x2=((p.x+1)*8)+8,y2=((p.y+1)*8)
---	}
---	lt={
---		x=(p.x-1)*8,y=p.y*8,
---		x2=((p.x-1)*8)+8,y2=((p.y+1)*8)
---	}
-	up={
-		x=p.x*8,y=(p.y*8)-8,
-		x2=((p.x+1)*8),y2=((p.y+1)*8)-8
-	}
-	dwn={
-		x=p.x*8,y=(p.y*8)+8,
-		x2=((p.x+1)*8),y2=((p.y+1)*8)+8
-	}
-	if btnp(⬅️) and not btn(🅾️) and not btn(❎) then
-		if canmove(⬅️) do p.x-=1 end
-	end
-	if btnp(➡️) and not btn(🅾️) and not btn(❎) then
-		if canmove(➡️) do p.x+=1 end
-	end
-	
-	if btnp(⬆️) and not btn(🅾️) and not btn(❎) then
-		if canmove(⬆️) do p.y-=1 end
-	end
-	if btnp(⬇️) and not btn(🅾️) and not btn(❎) then
-		if canmove(⬇️) do p.y+=1 end
-	end
-	
-	if btn(🅾️) then
-		if btnp(➡️) do action(➡️) end
-		if btnp(⬅️) do action(⬅️) end
-		if btnp(⬆️) do action(⬆️) end
-		if btnp(⬇️) do action(⬇️) end
-	end
-	
-	t=(t+1)%s
-	if (t==0) f=f%#sp+1
+function player:draw()
+spr(self.anime[self.state].sp[self.f],self.x*8,self.y*8)
 end
 
-function p_draw()
---	rect(rt.x,rt.y,rt.x2,rt.y2)
---	rect(lt.x,lt.y,lt.x2,lt.y2)
---	rect(up.x,up.y,up.x2,up.y2,4)
---	rect(dwn.x,dwn.y,dwn.x2,dwn.y2,5)
---	print(f)
-	spr(sp[f],p.x*8,p.y*8)
-
+function player:update()
+--anime
+self.t=(self.t+1)%self.anime[self.state].s
+if (self.t==0) self.f=self.f%#self.anime[self.state].sp+1
 end
+
+
+--		update=function(self)
+--			printh(self)
+----		self.l={
+----			x=(self.x-1)*8,y=self.y*8,
+----			x2=((self.x-1)*8)+8,y2=((self.y+1)*8)
+----		}
+----		self.r={
+----			x=(self.x+1)*8,y=self.y*8,
+----			x2=((self.x+1)*8)+8,y2=((self.y+1)*8)
+----		}
+--		end,
+--		r_tile=function(self)
+--			printh("r_tile")
+--			printh(self.r)
+--			return {
+--				x=self.r.x/8 or 0,
+--				y=self.r.y/8 or 0
+--			}
+--		end
+--	}
+--	return new_plyr
+--end
+
+--function p_init()
+--	p={x=1,y=3,a={}}
+--	sp={6,7}
+--	t,f,s=0,1,6 --tick,frame,step
+--	add(p.a,{})
+--	add(p.a,{})
+--	add(p.a,{})
+--	add(p.a,{})
+--end
+--
+--function p_update()
+----	plyr:update()
+----	rt={
+----		x=(p.x+1)*8,y=p.y*8,
+----		x2=((p.x+1)*8)+8,y2=((p.y+1)*8)
+----	}
+----	p.a[1]={
+----		x=(p.x+1)*8,y=p.y*8,
+----		x2=((p.x+1)*8)+8,y2=((p.y+1)*8)
+----	}
+----	lt={
+----		x=(p.x-1)*8,y=p.y*8,
+----		x2=((p.x-1)*8)+8,y2=((p.y+1)*8)
+----	}
+--	up={
+--		x=p.x*8,y=(p.y*8)-8,
+--		x2=((p.x+1)*8),y2=((p.y+1)*8)-8
+--	}
+--	dwn={
+--		x=p.x*8,y=(p.y*8)+8,
+--		x2=((p.x+1)*8),y2=((p.y+1)*8)+8
+--	}
+--	if btnp(⬅️) and not btn(🅾️) and not btn(❎) then
+--		if canmove(⬅️) do p.x-=1 end
+--	end
+--	if btnp(➡️) and not btn(🅾️) and not btn(❎) then
+--		if canmove(➡️) do p.x+=1 end
+--	end
+--	
+--	if btnp(⬆️) and not btn(🅾️) and not btn(❎) then
+--		if canmove(⬆️) do p.y-=1 end
+--	end
+--	if btnp(⬇️) and not btn(🅾️) and not btn(❎) then
+--		if canmove(⬇️) do p.y+=1 end
+--	end
+--	
+--	if btn(🅾️) then
+--		if btnp(➡️) do action(➡️) end
+--		if btnp(⬅️) do action(⬅️) end
+--		if btnp(⬆️) do action(⬆️) end
+--		if btnp(⬇️) do action(⬇️) end
+--	end
+--	
+--	t=(t+1)%s
+--	if (t==0) f=f%#sp+1
+--end
+--
+--function p_draw()
+----	rect(rt.x,rt.y,rt.x2,rt.y2)
+----	rect(lt.x,lt.y,lt.x2,lt.y2)
+----	rect(up.x,up.y,up.x2,up.y2,4)
+----	rect(dwn.x,dwn.y,dwn.x2,dwn.y2,5)
+----	print(f)
+--	spr(sp[f],p.x*8,p.y*8)
+--
+--end
 -->8
 --collisions
 function canmove(dir)		
@@ -183,14 +199,14 @@ end
 
 function getmtile(dir)
 	local s
-	printh(plyr:r_tile())
+--	printh(player[1].r.y)
 	if dir == ➡️ then
 --		local s2=mget((rt.x/8),(rt.y/8))
 --		s=mget((p.a[1].x/8),(p.a[1].y/8))
-		s=mget(
-			plyr.r_tile().x,
-			plyr.r_tile().y
-		)
+--		s=mget(
+--			plyr.r_tile(),
+--			plyr.r_tile()
+--		)
 --		printh("s2 "..s2)
 --		printh("s "..s)
 	end
@@ -327,6 +343,20 @@ end
 function rectfill2(_x,_y,_w,_h,_c)
  --★
  rectfill(_x,_y,_x+max(_w-1,0),_y+max(_h-1,0),_c)
+end
+-->8
+function makenpc(x,y,typ)
+	local new_npc={
+		x=x,
+		y=y,
+		typ=typ,
+		speed=1,
+		update=function(self)
+		end,
+		draw=function(self)
+		end,
+	}
+	return new_npc
 end
 __gfx__
 00000000bbbbbbbbb5b4cc7cbbbbbbbbcccccc4bcccccccb80000008800000088000000880000008000000000000000000000000000000000000000000000000
