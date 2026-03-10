@@ -11,10 +11,10 @@ function _updates()
 end
 
 function _draw()
---	intro()
+	intro()
 	cls(0)
-	stars()
-	menu()
+--	stars()
+--	menu()
 end
 
 function wait(a)
