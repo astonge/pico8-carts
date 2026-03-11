@@ -9,7 +9,7 @@ function _init()
 	npcs={}
 	add(npcs,makenpc(6,6,"camper"))
 	add(npcs,makenpc(7,4,"hiker"))
-	intro()
+--	intro()
 	startgame()
 end
 
@@ -67,11 +67,11 @@ function player:init()
 	self.y=1
 	self.sp={23,24}
 	--tick,frame,step	
-	self.t,self.f,self.s = 0,1,16
+	self.t,self.f = 0,1
 	self.state="idle"
 	self.anime={
-	idle={s=16,sp={23,24}},
-	walk={s=6,sp={6,7}},
+	idle={s=8,sp={23,24}},
+	walk={s=16,sp={6,7}},
 }
 end
 
@@ -84,7 +84,12 @@ end
 
 function player:draw()
 --debug(self)
-spr(self.anime[self.state].sp[self.f],self.x*8,self.y*8)
+?self.state
+spr(
+	self.anime[self.state]
+		.sp[self.f],
+	self.x*8,self.y*8
+)
 end
 
 function player:update()
@@ -106,8 +111,20 @@ self.d={
 	x2=((self.x+1)*8),y2=((self.y+1)*8)+8
 }
 --anime
+if self.state~="idle" then
+--	printh("not idle")
+	printh(self.t)
+	if self.t==9 then
+		self.t=0
+		self.f=1
+		self.state="idle"
+	end
+	printh("---")
+end
+
 self.t=(self.t+1)%self.anime[self.state].s
 if (self.t==0) self.f=self.f%#self.anime[self.state].sp+1
+
 --buttons	
 if not btn(❎) and not btn(🅾️) then
 	if btnp(⬆️) do
@@ -117,6 +134,7 @@ if not btn(❎) and not btn(🅾️) then
 	end
 	if btnp(⬇️) do
 		if canmov(self.d) then
+			self.state="walk"
 			self.y+=1
 		end
 	end
