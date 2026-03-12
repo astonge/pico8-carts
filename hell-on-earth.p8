@@ -64,13 +64,15 @@ function player:init()
 	self.u={x=0,y=0,x2=0,y2=0}
 	self.d={x=0,y=0,x2=0,y2=0}
 		
+	self.flts={}
+		
 	self.x=1
 	self.y=1
 	self.state="idle"
 	--tick,frame,step	
 	self.t,self.f = 0,1
 	self.anime={
-		idle={s=12,sp={23,24}},
+		idle={s=22,sp={23,24}},
 		mup={s=10,sp={7,8}},
 		mdn={s=10,sp={7,9}},
 		mlt={s=10,sp={7,24}},
@@ -87,6 +89,7 @@ end
 
 function player:draw()
 --debug(self)
+self:drawflt()
 spr(
 	self.anime[self.state]
 		.sp[self.f],
@@ -124,6 +127,9 @@ if self.state~="idle" then
 		t=0
 	end
 end
+
+--floats
+self.updateflt()
 
 --buttons	
 if not btn(❎) and not btn(🅾️) then
@@ -172,7 +178,36 @@ function player:addinv(thing)
 	printh("adding "..thing.." to inv")
 end
 
+function player:addflt(flt)
+--	printh("adding flt "..flt)
+	add(self.flts,flt)
+end
+
+function player:updateflt()
+	if #plyr.flts>0 then
+		for f in all(plyr.flts) do
+			if f.y<0 then
+				del(plyr.flts,f)
+			else
+				f.y-=1
+			end
+		end
+	end
+end
+
+function player:drawflt()
+	for f in all(plyr.flts) do
+		circfill(f.x,f.y,3,4)
+	end
+end
+
 function action(dir)
+	printh("action")
+	plyr:addflt({
+		x=plyr.x*8,
+		y=plyr.y*8,
+	})
+
 	if canget(dir,tree.id) then
 		-- tree
 		sfx(1)
