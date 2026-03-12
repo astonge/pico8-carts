@@ -89,12 +89,12 @@ end
 
 function player:draw()
 --debug(self)
-self:drawflt()
 spr(
 	self.anime[self.state]
 		.sp[self.f],
 	self.x*8,self.y*8
 )
+self:drawflt()
 end
 
 function player:update()
@@ -186,7 +186,9 @@ end
 function player:updateflt()
 	if #plyr.flts>0 then
 		for f in all(plyr.flts) do
-			if f.y<0 then
+			printh(plyr.y*8)
+			printh("f.y "..f.y)
+			if f.y<(plyr.y*8)-6 then
 				del(plyr.flts,f)
 			else
 				f.y-=1
@@ -197,14 +199,14 @@ end
 
 function player:drawflt()
 	for f in all(plyr.flts) do
-		circfill(f.x,f.y,3,4)
+		circfill(f.x,f.y,3,7)
 	end
 end
 
 function action(dir)
 	printh("action")
 	plyr:addflt({
-		x=plyr.x*8,
+		x=(plyr.x*8)+4,
 		y=plyr.y*8,
 	})
 
