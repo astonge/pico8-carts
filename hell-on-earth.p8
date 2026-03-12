@@ -52,6 +52,7 @@ end
 -->8
 --player
 player={}
+t=0
 function player:new(tbl)
 tbl = tbl or {}
 setmetatable(tbl,{ __index = self})
@@ -65,13 +66,15 @@ function player:init()
 		
 	self.x=1
 	self.y=1
-	self.sp={23,24}
+	self.state="idle"
 	--tick,frame,step	
 	self.t,self.f = 0,1
-	self.state="idle"
 	self.anime={
-	idle={s=8,sp={23,24}},
-	walk={s=16,sp={6,7}},
+		idle={s=12,sp={23,24}},
+		mup={s=10,sp={7,8}},
+		mdn={s=10,sp={7,9}},
+		mlt={s=10,sp={7,24}},
+		mrt={s=10,sp={7,23}},
 }
 end
 
@@ -84,7 +87,6 @@ end
 
 function player:draw()
 --debug(self)
-?self.state
 spr(
 	self.anime[self.state]
 		.sp[self.f],
@@ -111,40 +113,41 @@ self.d={
 	x2=((self.x+1)*8),y2=((self.y+1)*8)+8
 }
 --anime
-if self.state~="idle" then
---	printh("not idle")
-	printh(self.t)
-	if self.t==9 then
-		self.t=0
-		self.f=1
-		self.state="idle"
-	end
-	printh("---")
-end
-
 self.t=(self.t+1)%self.anime[self.state].s
 if (self.t==0) self.f=self.f%#self.anime[self.state].sp+1
+--after 60 frames of non idle
+--switch back to idle
+if self.state~="idle" then
+	t=t+1
+	if t%60==0 then
+		self.state="idle"
+		t=0
+	end
+end
 
 --buttons	
 if not btn(❎) and not btn(🅾️) then
 	if btnp(⬆️) do
 		if canmov(self.u) then
+			self.state="mup"
 			self.y-=1
 		end
 	end
 	if btnp(⬇️) do
 		if canmov(self.d) then
-			self.state="walk"
+			self.state="mdn"
 			self.y+=1
 		end
 	end
 	if btnp(➡️) do
 		if canmov(self.r) then
+			self.state="mrt"
 			self.x+=1
 		end
 	end
 	if btnp(⬅️) do
 		if canmov(self.l) then
+			self.state="mlt"
 			self.x-=1
 		end
 	end
@@ -155,6 +158,12 @@ if btn(🅾️) then
 	if btnp(⬅️) do action(self.l) end
 	if btnp(⬆️) do action(self.u) end
 	if btnp(⬇️) do action(self.d) end
+end
+if btn(❎) then
+	if btnp(➡️) do sfx(0) end
+	if btnp(⬅️) do sfx(0) end
+	if btnp(⬆️) do sfx(0) end
+	if btnp(⬇️) do sfx(0) end
 end
 --end of update
 end
