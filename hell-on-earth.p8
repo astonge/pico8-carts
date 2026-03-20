@@ -1,6 +1,7 @@
 pico-8 cartridge // http://www.pico-8.com
 version 43
 __lua__
+tspr="202020202020202020202020202020202020202020202020201~!21~!21?!315!30^!506!413!60#!903!511!60$!3%5!9%110!60$!3%7!6%30|!60$!3%8!6%30~!70!!5%a!4%40:!7%2!40m!102!10b!5%c!1%50;!7%2!40m!50a!6%i0}!8%3!40k!101!30b!7%i0}!4%1!2%4!40i!808!8%j0]!3%9!30i!808!9%j0[!3%9!30h!a07!9%k0[!2%a!30g!a07!8%l010=!2%a!20h!a07!8%g!2%3020=!2%9!20h!6%2!404!5%j!5040=!1%90j!6%4!a%k!6040[%70m!3%6!9%l!5050[%20q!3%8!8%k!6051d!4%9!6%m!4061c!5%@!5051b!6%@!a1b!5%$!91a!6%%!819!6%h!2%m!805wb04wa05w201wl06we%gw1%2w1%1w9%c!705wb04wa05w201wl06we%gw1%2w1%1w9%e!505wb04wa05wo06we03%dwe03%g05wb04wa05wo06we03%dwe03%g05wb04wa05wa0kwe03%c!1%3wb03%g05wb04wa05wa0kwe03%c!1%3wb03%g05wb04wa05w201w704!2%40awe03%ewd03%g05wb04wa07w803!2%40bwe03%dwe03%g05wb04wa05wk0awe03%dwe03%g05wb04wa05wk0awe03%dwe03%g05wb04wa05wk0awe03%dwe03%g05wb04wa05wk0awe03%dwe03%g05wp05wa0j!1we03%dwe03%g05wp05wa02!1%40c!1we03%dwe03%g05wp05wa02%40a!4we03%dwe03%g05wp05wa02%409!5we03%ewd03%f0105wb04wa05wo01!5wp%8wl%8!105wb04w501w102w105wo03!3w203wk02%3w1%2wl02%6!105wb04w501w102w104!1wo03!3w203wk02%3w1%2wl02%6!105wb04w601!204!2wo03!4w203wj02%3wo02%6!10pw107!4%10o!3%20p%60n%5!20u!7%d0a!4%~!20t!7%d!307!5%~!20s!7%e!406!3%|!30v!305%7wc01!2wa%3wc%2wc%2w5%2w4%b!40qw501!101w501%6wc01!2wa01%2wc01%1wc02w501%1w402%9!3%10qw501%101w501%6wc01!1%1wa01%2wc01%1wc02w501%1w402%8!2%30qw103w101%101w501%6w508%2w402w401%2w503w401%301w704w501%1w402%8!1%40qw101!101w101%101w103w101%6w502!5%3w401%1w401%2w501%2w401%4w701%3w501%1w402%8!1%40qw103w101%101w103w101%6w9!1%5w401%1w401%2w501%2w401%4w701%3w501%1w402%d0qw501%101w101%101w101%6w9%6w401%1w401%2w501%2w401%4w701%3w501%1w402%d0qw501%101w101%101w101%6w902%4w401%1w401%2w501%2w401%4w701%3w501%1w402%d0v%fw506%4wa01%2w904%4w701%3wb02%d0q!3%hw502%8wa01%2w901%8w601%3wf%b0q!2%jwb%4w401w401%2w206w4%4w801%3w502wa%90o!3%kwb%4w401w401%2w206w4%4w801%3w502wa%90n!4%jwc01%3w301%2w202%2w204%2w401%3w203w301%3w501%1w7%c0m!4%jw203w108%304%204%341w202%304%3w207%405%302w2%c!10m!4%kw4%5!1%6w1%dw2%zw2%b!20l!5%j!1w4%3!4%5w1%dw2%zw2%b!20l!4%j!2%1w3%2!4%.w1%a!20j!6%i!2%6!4^7!20j!5%i!2%5!5%j!1%]!30i!6%i!1%4!6%k!1%[!40i!6%n!4%l!2%+!60h!6%f!3%5!4%m!2%-!70h!5%f!3%5!4%5!1%2!1%e!2%_!80g!5%f!3%4!5%4!8%c!2%_!80g!3%g!3%3!6%3!a%c!2%_!80f!4%f!d%2!a%c!3%_!5%1!20f!4%f!d%2!a%b!4%_!4%40f!4%e!e%2!a%b!4%_!3%50f!4%e!e%2!a%a!4%-!3%50f!4%d!f%2!9%b!4%-!3%50f!4%d!f%1!a%b!4%+!2%50f!4%d!e%2!a%2!2%7!3%=!3%40g!5%b!e%2!a%1!5%4!2%}!2%40g!6%9!e%2!a%2!5%4!1%{!2%40g!6%9!p%4!4%,!2%40g!8%7!p%3!5%,!1%50h!7%7!o%3!6%d!1%(!1%50h!7%7!o%3!6%d!1%(!1%50i!7%6!n%4!7%c!1%[0i!7%5!o%4!7%b!2%[0i!7%5!o%5!6%b!1%7!1%x!1%90i!7%5!n%6!5%b!2%7!2%w!2%80h!7%7!m%5!4%c!3%7!2%w!2%80h!7%7!m%4!5%a!5%8!1%w!2%80h!6%8!m%2!6%a!5%8!2%w!2%80g!5%a!m%2!6%9!5%a!1%v!2%90g!5%b!t%8!6%&!2%90f!4%d!s%8!6%r!1%f!5%60f!3%e!r%8!6%s!2%d!6%60f!3%f!q%8!6%a!2%g!2%d!6%60f!3%f!q%8!6%9!3%g!1%e!3%1!1%70f!3%f!p%8!7%7!5%f!2%d!4%90f!3%g!n%9!7%5!7%e!3%d!4%90g!2%g!m%a!7%3!9%d!4%d!4%9"
 function _init()
 	plyr=player:new()
 	plyr:init()
@@ -8,8 +9,16 @@ function _init()
 	npcs={}
 	add(npcs,makenpc(6,6,"camper"))
 	add(npcs,makenpc(7,4,"hiker"))
-	intro()
+--	intro()
+	title=explode64(tspr)
+	_draw = draw_title()
 	startgame()
+end
+
+function draw_title()
+	cls()
+	spr_rle(title,0,0)
+	cprint("press ❎",nil,110,{0})
 end
 
 function startgame()
@@ -185,12 +194,13 @@ end
 function player:updateflt()
 	if #plyr.flts>0 then
 		for f in all(plyr.flts) do
-			printh(plyr.y*8)
-			printh("f.y "..f.y)
+--			printh(plyr.y*8)
+--			printh("f.y "..f.y)
 			if f.y<(plyr.y*8)-6 then
 				del(plyr.flts,f)
 			else
 				f.y-=1
+				f.r-=0.5
 			end
 		end
 	end
@@ -198,15 +208,16 @@ end
 
 function player:drawflt()
 	for f in all(plyr.flts) do
-		circfill(f.x,f.y,3,7)
+		circfill(f.x,f.y,f.r,f.c)
 	end
 end
 
 function action(dir)
-	printh("action")
 	plyr:addflt({
 		x=(plyr.x*8)+4,
 		y=plyr.y*8,
+		r=4,
+		c=7
 	})
 
 	if canget(dir,tree.id) then
@@ -242,12 +253,14 @@ function isblocked(tile)
 end
 
 function canmov(d)
---	if d.x<0 or d.y<0 then
---		return false
---	end
---	if d.x>120 or d.y>120 then
---		return false
---	end
+	printh(d.x)
+	printh(d.y)
+	if d.x<0 or d.y<0 then
+		return false
+	end
+	if d.x>450 or d.y>250 then
+		return false
+	end
 	return not isblocked(mget(d.x/8,d.y/8))
 end
 -->8
@@ -273,7 +286,6 @@ function takepile()
 end
 -->8
 --utils
-
 function wait(_wait)
  repeat
   _wait-=1
@@ -459,6 +471,131 @@ end
 function draw_text()
 	sspr(0,47,47,19,64-14,64+19)
 	sspr(48,47,47,19,64-4,64+26)
+end
+-->8
+base64str='0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_-+=[]}{;:<>,./?~|'
+
+function explode_hex(s, delimiter)
+ local retval,i=split(s,delimiter,false)
+  
+ for i=1,#retval do
+  retval[i] =("0x"..retval[i])+0
+ end
+ return retval
+end
+
+
+function explode64(s)
+ local retval,lastpos,i = {},1,2
+ 
+ while i <= #s do
+  add(retval,base64decode(sub(s, lastpos, i)))
+  
+  lastpos = i+1
+  i += 2
+ end
+ return retval
+end
+
+
+function base64decode(str)
+ val=0
+ for i=1,#str do
+  c=sub(str,i,i)
+  for a=1,#base64str do
+   v=sub(base64str,a,a)
+   if c==v then
+    val *= 64
+    val += a-1
+    break
+   end
+  end
+ end
+ return val
+end
+
+-- optimized rle drawing functions
+-- big thanks to frederic souchu
+-- ( @fsouchu on twitter )
+-- for the help
+function spr_rle(table,_x,_y)
+ local x,y,i,w=_x,_y,3,table[1]+_x
+ for i=3,#table do		
+  local t=table[i]
+  local col,rle = (t& 0xff00)>>8
+                  ,t& 0xff
+  if col!=0 then
+   rectfill(x,y,x+rle-1,y,col)
+  end
+  x+=rle
+  if x >=w then
+   x = _x
+   y += 1
+  end
+ end
+end
+
+function spr_rle_flip(table,_x,_y)
+ local w=table[1]
+ local x,y,i,x2=_x+w,_y,3,_x+w
+
+ for i =3,#table do
+  local t=table[i]
+  local col,rle = (t& 0xff00)>>8
+                  ,t& 0xff 
+  if col!=0 then
+   rectfill(x-rle+1,y,x,y,col)
+  end
+  x-=rle
+  if x <=_x then
+   x = x2
+   y += 1
+  end
+ end
+end
+
+function draw_rle(table,_x,_y)
+local x,y,i,w=_x,_y,3,table[1]+_x
+
+ for i=3,#table do
+  local t=table[i]
+  local col,rle = (t& 0xff00)>>8
+                  ,t& 0xff
+
+  rectfill(x,y,x+rle-1,y,col)
+  x+=rle
+  if x >=w then
+   x = _x
+   y += 1
+  end
+ end
+end
+
+function setpal(palstr)
+ local i,palindex
+ palindex=explode_hex(palstr,",")
+ for i=1,#palindex do
+  pal(i-1,palindex[i],1)
+ end
+end
+
+
+function pal2()
+ local i
+ for i=0,15 do
+  pal(i,128+i,1)
+ end
+end
+
+function cprint(txt,x,y,cols)
+ local len,org=#txt*4+4,clip() 
+ local a
+ x=x and x or 64-len/2
+ for a=1,3 do
+  print(txt,x,y,cols[a])    
+  clip(x,y+a*2,len,2)
+ end
+ clip(org)
 end
 __gfx__
 00000000bbbbbbbbb5b4cc7cbbbbbbbbcccccc4bcccccccb80000008800000088000000880000008000000000888880008888800000000000000000000000000
